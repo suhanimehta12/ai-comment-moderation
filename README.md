@@ -1,131 +1,97 @@
-# 🛡️ AI Comment Moderation System
+🛡️ AI Comment Moderation System
 
-A production-ready SaaS tool that classifies social media comments in real time — detecting **toxicity**, **spam**, and **sentiment** using your existing NLP pipeline.
+A production-ready full-stack SaaS system that performs real-time toxicity detection, spam filtering, and sentiment analysis on social media comments using a machine learning NLP pipeline.
 
----
+🚀 Live Demo
 
-## 🚀 Features
+👉 Frontend: https://ai-comment-moderation-43h1.vercel.app/
 
-| Feature | Details |
-|---|---|
-| Toxicity Detection | Toxic / Non-Toxic |
-| Spam Detection | Spam / Not Spam |
-| Sentiment Analysis | Positive / Negative / Neutral |
-| Confidence Score | Per-prediction probability |
-| Probability Breakdown | Full class scores per task |
-| History Log | Last 5 analyzed comments |
+👉 Backend API: https://ai-comment-moderation-1.onrender.com
 
----
+📸 Preview
+🧠 Moderation Dashboard
 
-## 🧱 Tech Stack
+📊 Prediction Results
 
-| Layer | Technology |
-|---|---|
-| ML / NLP | scikit-learn · TF-IDF · Logistic Regression |
-| Backend | FastAPI · Pydantic · Uvicorn |
-| Frontend | React · Fetch API |
-| Deployment | Render (backend) · Vercel (frontend) |
+📈 Probability Breakdown
 
----
-
-## 📁 Project Structure
-
-```
+✨ Features
+🧠 Toxicity Detection — Classifies comments as Toxic / Non-Toxic
+🚫 Spam Detection — Filters spam vs legitimate comments
+💬 Sentiment Analysis — Positive / Negative / Neutral classification
+📊 Confidence Score — Probability-based prediction confidence
+📈 Full Probability Breakdown — Class-wise scoring for transparency
+🕓 History Log — Stores last 5 analyzed comments
+⚡ Real-time API inference — Fast prediction via REST API
+🧱 Tech Stack
+Layer	Technology
+ML / NLP	scikit-learn · TF-IDF · Logistic Regression
+Backend	FastAPI · Uvicorn · Pydantic
+Frontend	React · Fetch API · Tailwind CSS
+Deployment	Render (Backend) · Vercel (Frontend)
+📁 Project Structure
 ai-comment-moderation/
+│
 ├── backend/
-│   ├── main.py           # FastAPI app + routes
-│   ├── model.py          # Multi-task sklearn pipelines
-│   ├── preprocess.py     # Text cleaning (from your NLP classifier)
+│   ├── main.py              # FastAPI app
+│   ├── model.py             # ML pipelines
+│   ├── preprocess.py        # Text cleaning pipeline
 │   ├── requirements.txt
-│   └── models/           # Auto-created; holds .joblib file
+│   └── models/              # Trained model files
 │
 ├── frontend/
 │   └── src/
-│       ├── api.js         # Fetch API integration
-│       ├── Dashboard.jsx  # Full SaaS dashboard UI
+│       ├── api.js           # API calls (Fetch)
+│       ├── Dashboard.jsx    # SaaS UI dashboard
 │       └── App.js
+│
+├── screenshots/
+│   ├── dashboard-1.png
+│   ├── dashboard-2.png
+│   └── dashboard-3.png
 │
 ├── README.md
 └── deployment-guide.md
-```
-
----
-
-## ⚡ Run Locally
-
-### Backend
-
-```bash
+⚙️ Run Locally
+🧠 Backend (FastAPI)
 cd backend
 pip install -r requirements.txt
 uvicorn main:app --reload --port 8000
-```
 
-The first run trains models on seed data and saves them to `backend/models/`.
-Subsequent runs load the saved model — startup is instant.
+👉 API runs at:
 
-### Frontend
-
-```bash
-# Create React app scaffolding (if you haven't already)
-npx create-react-app frontend
-cp -r frontend/src/* frontend/src/
-
+http://localhost:8000
+💻 Frontend (React)
 cd frontend
 npm install
 npm start
-```
 
-Open [http://localhost:3000](http://localhost:3000).
+👉 App runs at:
 
----
+http://localhost:3000
+🌐 API Endpoints
+🔹 POST /moderate-comment
 
-## 🌐 API
+Request
 
-### `POST /moderate-comment`
-
-**Request**
-```json
 { "comment": "This is amazing!" }
-```
 
-**Response**
-```json
+Response
+
 {
-  "comment": "This is amazing!",
   "toxicity": "Non-Toxic",
   "spam": "Not Spam",
   "sentiment": "Positive",
-  "confidence": 0.91,
-  "all_scores": {
-    "toxicity":  { "Non-Toxic": 0.91, "Toxic": 0.09 },
-    "spam":      { "Not Spam": 0.88, "Spam": 0.12 },
-    "sentiment": { "Positive": 0.85, "Negative": 0.07, "Neutral": 0.08 }
-  }
+  "confidence": 0.91
 }
-```
-
-### `GET /health`
-```json
+🔹 GET /health
 { "status": "ok", "models_loaded": true }
-```
+📊 Use Cases
+📱 Social media moderation (Instagram, TikTok, X)
+🎥 YouTube comment filtering
+🛡️ Brand safety monitoring dashboards
+🎧 Customer support ticket prioritization
+🤖 AI content moderation pipelines
 
----
 
-## 📊 Use Cases
-
-- **Instagram / TikTok moderation** — auto-flag toxic comments before they go live
-- **YouTube comment filtering** — remove spam and hate speech at scale  
-- **Brand safety dashboards** — monitor brand sentiment across platforms
-- **Customer support triage** — route negative sentiment tickets to priority queues
-
----
-
-## 🏆 Skills Demonstrated
-
-✔ NLP / ML model integration (sklearn pipelines)  
-✔ FastAPI REST API design  
-✔ React SaaS dashboard  
-✔ Fetch API (no Axios)  
-✔ Full-stack deployment  
-✔ Real-world product thinking  
+MIT © 2025
